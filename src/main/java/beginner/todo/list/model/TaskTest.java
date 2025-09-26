@@ -1,25 +1,37 @@
 package beginner.todo.list.model;
 
 import java.sql.Date;
+import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "task")
+@Table(name = "tasks")
 
 public class TaskTest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
 
-    String nameTask;
-    Date dueDate;
-    Date inputDate;
-    String status;
+    private String nameTask;
+    private String description;
+    private String type;
+
+    private Date dueDate;
+    private Date inputDate;
+
+    private Boolean status;
+
+    // array description 
+
+    @ManyToOne
+    private UserTest user;
 
     // start setters and getters
 
@@ -31,6 +43,25 @@ public class TaskTest {
     public void setnameTask(String nameTask) {
         this.nameTask = nameTask;
     }
+
+    //description
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    //type
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
 
     //dueDate
     public Date dueDatel() {
@@ -50,14 +81,14 @@ public class TaskTest {
     }
 
     //status
-    public String getStatus() {
+    public Boolean getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Boolean status) {
         this.status = status;
     }
-    
+
     //end setters and getters
 
 }
