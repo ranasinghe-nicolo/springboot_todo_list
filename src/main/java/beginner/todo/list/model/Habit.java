@@ -1,5 +1,5 @@
 package beginner.todo.list.model;
 
-public class UserId {
-
+public class Habit {
+    
 }
